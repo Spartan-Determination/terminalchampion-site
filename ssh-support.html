@@ -1,17 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Terminal Champion — Support</title>
-<meta http-equiv="refresh" content="0; url=/support.html">
-<link rel="canonical" href="https://terminalchampion.com/support">
-<script>window.location.replace("/support.html");</script>
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fcfbf8; color: #5a4e3f; padding: 48px 24px; text-align: center; }
-  a { color: #8a6a2c; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Champion SSH — Support</title>
+    <meta name="description" content="Support and FAQs specifically for Terminal Champion SSH, the sandboxed Mac App Store edition.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fcfbf8;
+            color: #5a4e3f;
+            line-height: 1.7;
+        }
+        .container { max-width: 760px; margin: 0 auto; padding: 48px 24px 24px; }
+        h1, h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+            color: #8a6a2c;
+            letter-spacing: -0.01em;
+        }
+        h1 { font-size: 2em; margin-bottom: 8px; }
+        h2 { font-size: 1.15em; margin: 32px 0 12px; }
+        h3 { font-size: 1em; color: #2a2319; margin: 20px 0 8px; font-weight: 600; }
+        .subtitle { font-size: 1em; color: #8a7f6d; margin-bottom: 32px; }
+        p, li { font-size: 0.95em; color: #5a4e3f; margin-bottom: 12px; }
+        strong { color: #1a1510; font-weight: 600; }
+        ul { padding-left: 24px; margin-bottom: 12px; }
+        a { color: #8a6a2c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: rgba(138, 106, 44, 0.08);
+            color: #8a6a2c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+        .back { display: inline-block; margin-bottom: 32px; color: #8a6a2c; font-size: 0.9em; }
+        .contact-box {
+            background: rgba(138, 106, 44, 0.06);
+            border: 1px solid rgba(138, 106, 44, 0.3);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 24px 0 32px;
+        }
+        .contact-box p { margin-bottom: 8px; }
+        .contact-box p:last-child { margin-bottom: 0; }
+        .contact-box a { font-weight: 600; }
+        .faq-item {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(42, 35, 25, 0.06);
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item strong {
+            display: block;
+            color: #1a1510;
+            margin-bottom: 6px;
+            font-size: 1em;
+        }
+        .callout {
+            background: rgba(138, 106, 44, 0.04);
+            border-left: 3px solid #8a6a2c;
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .callout p { margin: 0; font-size: 0.92em; }
+        footer {
+            text-align: center;
+            padding: 32px 0 8px;
+            font-size: 0.85em;
+            color: #8a7f6d;
+            border-top: 1px solid rgba(42, 35, 25, 0.1);
+            margin-top: 56px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<p>Redirecting to <a href="/support.html">Terminal Champion support</a>…</p>
+    <div class="container">
+        <a href="/" class="back">← Back to Terminal Champion</a>
+        <h1>Terminal Champion SSH — Support</h1>
+        <p class="subtitle">Bug reports, FAQs, and help — for the Mac App Store edition.</p>
+
+        <div class="contact-box">
+            <p>Direct contact for anything not answered below:</p>
+            <p><a href="mailto:support@terminalchampion.com">support@terminalchampion.com</a></p>
+            <p style="color: #8a7f6d; font-size: 0.9em;">We typically respond within one business day.</p>
+        </div>
+
+        <div class="callout">
+            <p>Looking for support for the <strong>full Terminal Champion</strong> (with local shells, Docker, and direct-download distribution)? See the <a href="/support.html">general support page</a> instead. This page is specifically for the App Store edition.</p>
+        </div>
+
+        <h2>Before You Write In</h2>
+        <p>Please include the following — it dramatically reduces the back-and-forth:</p>
+        <ul>
+            <li>macOS version (<em>About This Mac → More Info → macOS</em>).</li>
+            <li>Terminal Champion SSH version (<em>Terminal Champion SSH menu → About</em>).</li>
+            <li>What you did, what you expected, what happened.</li>
+            <li>If a connection failed: anonymized SSH host signature (host, port, auth method — NOT credentials).</li>
+            <li>If the app crashed: the most recent crash log from <code>~/Library/Logs/DiagnosticReports/</code>.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>About this edition</h3>
+
+        <div class="faq-item">
+            <strong>What's the difference between Terminal Champion SSH and Terminal Champion?</strong>
+            <p>Terminal Champion SSH is the sandboxed Mac-App-Store edition. It focuses on SSH workflows only — no local shells, no Docker. The full <a href="/">Terminal Champion</a> adds local shells, Docker exec sessions, and direct download via terminalchampion.com or Homebrew. The SSH edition is for customers who want everything to come from a single trusted Apple-vetted source.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Why was the app renamed from Terminal Conductor SSH?</strong>
+            <p>Trademark conflict with a similarly named existing product (Melty Lab's "Conductor"). We renamed in May 2026. Same app, same Camis AI LLC team, same Mac App Store listing (the bundle identifier <code>com.terminalconductor.ssh</code> is unchanged), so the rename appeared as a regular update for existing customers. Your purchase and any saved data carried over automatically.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>What macOS versions are supported?</strong>
+            <p>macOS 14.0 (Sonoma) or later. Apple Silicon and Intel Macs are both supported.</p>
+        </div>
+
+        <h3>SSH connections</h3>
+
+        <div class="faq-item">
+            <strong>How do I add a new SSH connection?</strong>
+            <p>Click the caret next to the <code>+</code> button in the tab bar → <em>New SSH Connection</em>. Fill in host, port, user, and auth method (password, private key file, or generated Secure Enclave key). Optionally save credentials to Keychain for one-click reconnect.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Where are my SSH passwords stored?</strong>
+            <p>In macOS Keychain, scoped to <code>com.terminalconductor.ssh</code>. You can audit them at any time in <em>Keychain Access.app</em> by searching for that identifier. Credentials never leave your device and are never transmitted off-Mac except as part of the SSH handshake to the host you specified.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>How does the known_hosts trust model work?</strong>
+            <p>Trust-on-first-use (TOFU). The first time you connect to a host, we record its public key fingerprint. Subsequent connections verify against the stored fingerprint and alert if it changes (which could indicate a man-in-the-middle attack — or just a server rekey). Known hosts live at <code>~/Library/Containers/com.terminalconductor.ssh/Data/Library/Application Support/known_hosts</code>.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Can I use a jump host?</strong>
+            <p>Yes. Configure the jump host in the standard SSH config format and Terminal Champion SSH will respect <code>ProxyJump</code> declarations. Or use port forwarding from one tab to chain through.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>How do I set up port forwarding?</strong>
+            <p>Open a saved-credential SSH tab, then click the Network icon in the identity bar. The Port Forwards dialog lets you add local-to-remote (<code>-L</code>) or remote-to-local (<code>-R</code>) forwards on the fly. Forwards live as long as the tab does.</p>
+        </div>
+
+        <h3>Working with files</h3>
+
+        <div class="faq-item">
+            <strong>Can I paste images into an SSH session?</strong>
+            <p>Yes. Copy an image, switch to the SSH tab, press <kbd>⌘V</kbd>. Terminal Champion SSH writes it to a temp file and streams the bytes through the SSH exec channel to <code>/tmp/tc-images/</code> on the remote — no scp or sftp setup needed. Especially useful with AI coding agents (Claude Code, Codex, etc.) that accept image references in prompts.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Can I drag a file from Finder into an SSH tab?</strong>
+            <p>Yes, into managed-SSH tabs only. The file uploads to <code>/tmp/tc-files/&lt;name&gt;</code> on the remote and the path is pasted at the prompt. 100 MB cap per file.</p>
+        </div>
+
+        <h3>Tabs, groups, and visuals</h3>
+
+        <div class="faq-item">
+            <strong>How do I rename a tab?</strong>
+            <p>Click the tab's color dot, or long-press the tab; a label editor appears. Once a label is set, it takes priority over the auto-name.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>How do I change the visual mode or border?</strong>
+            <p>Open the right panel → Appearance → Visual Mode / Border Decoration. Settings are per-tab by default; use groups to apply to several tabs at once. All visual modes from the full Terminal Champion (Bubblegum Princess, Neon City, Coding Cowboy, JARVIS HUD, Wood, Marble) ship in this edition too.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Can I switch to the 1992 retro skin on macOS Sequoia or Tahoe?</strong>
+            <p>Yes — it's purely cosmetic and works on every supported macOS version. Settings → Appearance → Skin.</p>
+        </div>
+
+        <h3>Sessions and persistence</h3>
+
+        <div class="faq-item">
+            <strong>What happens when I quit the App?</strong>
+            <p>SSH connections close cleanly (the App Sandbox doesn't permit background daemons, unlike the full Terminal Champion). When you relaunch, the app remembers which tabs were open and offers to reconnect them — your Pinned / Recent list keeps the credentials so reconnection is one click.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>I accidentally closed a tab — can I get it back?</strong>
+            <p>Click the caret next to the <code>+</code> button. The Pinned / Recent list shows everywhere you've been; the recently-closed connection is in Recent and reconnects with one click.</p>
+        </div>
+
+        <h3>Privacy and data</h3>
+
+        <div class="faq-item">
+            <strong>Where is my data stored?</strong>
+            <p>Inside the sandboxed container at <code>~/Library/Containers/com.terminalconductor.ssh/</code>, which Apple isolates from other apps. Nothing leaves your Mac. See the <a href="/privacy">Privacy Policy</a> for the full breakdown.</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>How do I wipe all Terminal Champion SSH data?</strong>
+            <p>Quit the App, then delete <code>~/Library/Containers/com.terminalconductor.ssh/</code>. Removing the App from Applications removes the sandboxed container automatically.</p>
+        </div>
+
+        <h2>Bug reports &amp; feature requests</h2>
+        <p>Email <a href="mailto:support@terminalchampion.com">support@terminalchampion.com</a>. For bugs, please use the template at the top of this page. For feature requests, a short description of the workflow you're trying to support helps us prioritize. We read every email.</p>
+
+        <footer>
+            <p>&copy; 2026 Camis AI LLC. All rights reserved.</p>
+            <p style="margin-top: 6px;"><a href="/eula.html">EULA</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="/support.html">General Support</a></p>
+        </footer>
+    </div>
 </body>
 </html>

@@ -1,17 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Terminal Champion — SSH Edition</title>
-<meta http-equiv="refresh" content="0; url=/">
-<link rel="canonical" href="https://terminalchampion.com/">
-<script>window.location.replace("/");</script>
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fcfbf8; color: #5a4e3f; padding: 48px 24px; text-align: center; }
-  a { color: #8a6a2c; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Champion SSH — Sandboxed SSH client on the Mac App Store</title>
+    <meta name="description" content="Terminal Champion SSH is the sandboxed Mac App Store edition — focused on SSH workflows, with managed credentials, pinned hosts, image paste, port forwarding, and all three visual skins.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fcfbf8;
+            color: #5a4e3f;
+            line-height: 1.7;
+        }
+        .container { max-width: 820px; margin: 0 auto; padding: 56px 24px 24px; }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+            color: #8a6a2c;
+            letter-spacing: -0.01em;
+        }
+        h1 { font-size: 2.4em; margin-bottom: 12px; }
+        .subtitle {
+            font-size: 1.15em;
+            color: #8a7f6d;
+            margin-bottom: 36px;
+            font-style: italic;
+        }
+        h2 { font-size: 1.4em; margin: 40px 0 16px; }
+        h3 { font-size: 1.05em; color: #2a2319; font-family: 'Inter', sans-serif; font-weight: 600; margin: 20px 0 8px; letter-spacing: 0; }
+        p, li { font-size: 0.97em; color: #5a4e3f; margin-bottom: 12px; }
+        strong { color: #1a1510; font-weight: 600; }
+        ul { padding-left: 24px; margin-bottom: 16px; }
+        li { margin-bottom: 8px; }
+        a { color: #8a6a2c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: rgba(138, 106, 44, 0.08);
+            color: #8a6a2c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+        .back { display: inline-block; margin-bottom: 32px; color: #8a6a2c; font-size: 0.9em; }
+        .cta-box {
+            background: rgba(138, 106, 44, 0.06);
+            border: 1px solid rgba(138, 106, 44, 0.3);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        .cta-box .price { font-size: 1.6em; color: #1a1510; font-weight: 600; margin-bottom: 4px; }
+        .cta-box .price-sub { color: #8a7f6d; font-size: 0.9em; margin-bottom: 18px; }
+        .buy-btn {
+            display: inline-block;
+            background: #8a6a2c;
+            color: #fcfbf8;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.98em;
+            text-decoration: none !important;
+            letter-spacing: 0.01em;
+        }
+        .buy-btn:hover { background: #6f5524; }
+        .feature-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 20px 0 24px; }
+        @media (min-width: 640px) { .feature-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
+        .feature-card { padding: 14px 16px; background: rgba(138, 106, 44, 0.04); border-radius: 8px; border-left: 3px solid #8a6a2c; }
+        .feature-card strong { display: block; color: #1a1510; margin-bottom: 4px; font-size: 0.97em; }
+        .feature-card p { font-size: 0.88em; margin: 0; color: #6a5b48; }
+        .compare { margin: 28px 0; border: 1px solid rgba(42, 35, 25, 0.12); border-radius: 10px; overflow: hidden; }
+        .compare-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid rgba(42, 35, 25, 0.08); }
+        .compare-row:last-child { border-bottom: none; }
+        .compare-cell { padding: 12px 16px; font-size: 0.92em; }
+        .compare-cell.header { background: rgba(138, 106, 44, 0.06); font-weight: 600; color: #1a1510; font-size: 0.9em; }
+        .compare-cell.feature { font-weight: 500; color: #2a2319; }
+        footer {
+            text-align: center;
+            padding: 32px 0 8px;
+            font-size: 0.85em;
+            color: #8a7f6d;
+            border-top: 1px solid rgba(42, 35, 25, 0.1);
+            margin-top: 56px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<p>Redirecting to <a href="/">Terminal Champion</a>…</p>
+    <div class="container">
+        <a href="/" class="back">← Back to Terminal Champion</a>
+
+        <h1>Terminal Champion SSH</h1>
+        <p class="subtitle">The sandboxed SSH-focused edition. Buy once on the Mac App Store, run on every Mac you own.</p>
+
+        <p>Terminal Champion SSH is the App-Store-distributed sibling of <a href="/">Terminal Champion</a>. It strips the focus down to one job — managing SSH sessions — and ships inside Apple's macOS sandbox for customers who want everything to come from a single trusted source. Saved credentials live in your macOS Keychain. No local shells, no Docker, no externally signed binaries to approve. Drop it on a fresh Mac and you're connected to your remote box in under a minute.</p>
+
+        <div class="cta-box">
+            <div class="price">$2.99</div>
+            <div class="price-sub">One-time purchase. Works on every Mac signed in to your Apple ID.</div>
+            <a class="buy-btn" href="https://apps.apple.com/app/terminal-champion-ssh/id6762624479?mt=12" target="_blank" rel="noopener noreferrer">Get on the Mac App Store</a>
+        </div>
+
+        <h2>What you get</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <strong>Managed SSH connections</strong>
+                <p>russh-backed transport with TOFU known_hosts. Connect to anything sshd-compatible — bare metal, jump hosts, container ssh-servers — without leaving the app.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Saved credentials in Keychain</strong>
+                <p>Passwords and private-key passphrases stored in macOS Keychain. Re-auth is FaceID/password-protected. Never leaves your device.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Pinned + Recent hosts</strong>
+                <p>One-click reconnect to anywhere you've been. Pin the ones you live in; the rest age out automatically.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Image paste over SSH</strong>
+                <p>Copy a screenshot, switch tab, ⌘V — the image streams through the SSH exec channel to <code>/tmp/tc-images/</code> on the remote. No scp, no setup.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Port forwarding</strong>
+                <p>Local-to-remote (<code>-L</code>) and remote-to-local (<code>-R</code>) forwards configured per tab, on the fly, with no terminal commands.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Three skins ship together</strong>
+                <p>Default top tab bar, vertical browser-style sidebar, full 1992 Windows-3.1 retro chrome. All ship in one binary — switch per workspace.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Visual modes</strong>
+                <p>Bubblegum Princess, Neon City, Coding Cowboy, JARVIS HUD, Wood, Marble. Per-tab or per-group, with the right border art and ANSI rewrites baked in.</p>
+            </div>
+            <div class="feature-card">
+                <strong>Seven languages</strong>
+                <p>English, Spanish, French, Russian, Korean, Chinese, Arabic (with full RTL). Set per-app or follow system locale.</p>
+            </div>
+        </div>
+
+        <h2>Terminal Champion SSH vs. full Terminal Champion</h2>
+
+        <p>Both apps come from the same team, share most of the code, and serve different needs. Pick what fits your workflow:</p>
+
+        <div class="compare">
+            <div class="compare-row">
+                <div class="compare-cell header"></div>
+                <div class="compare-cell header">Terminal Champion SSH</div>
+                <div class="compare-cell header">Terminal Champion</div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-cell feature">Where it's sold</div>
+                <div class="compare-cell">Mac App Store</div>
+                <div class="compare-cell">terminalchampion.com / Homebrew</div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-cell feature">Sandboxed</div>
+                <div class="compare-cell">Yes (Apple App Sandbox)</div>
+                <div class="compare-cell">No (Developer ID signed)</div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-cell feature">SSH sessions</div>
+                <div class="compare-cell">Yes — full managed transport</div>
+                <div class="compare-cell">Yes</div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-cell feature">Local shells (zsh, bash, etc.)</div>
+                <div class="compare-cell">No (sandbox restriction)</div>
+                <div class="compare-cell">Yes</div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-cell feature">Docker exec</div>
+                <div class="compare-cell">No (sandbox restriction)</div>
+                <div class="compare-cell">Yes</div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-cell feature">Price</div>
+                <div class="compare-cell">$2.99 one-time (MAS)</div>
+                <div class="compare-cell">$2.99 one-time (per platform)</div>
+            </div>
+        </div>
+
+        <p>If your work is mostly remote — managing servers, running agents on remote dev boxes, jumping between cloud instances — <strong>Terminal Champion SSH</strong> is the lower-overhead choice. If you also live in local terminals or Docker containers, get the <a href="/buy.html">full Terminal Champion</a>.</p>
+
+        <h2>Privacy and data</h2>
+
+        <p>Terminal Champion SSH runs entirely on your Mac, inside Apple's macOS App Sandbox. Zero telemetry, zero analytics, no external servers operated by us. The only outbound network connections are the SSH connections you explicitly initiate. Credentials live in your sandboxed container at <code>~/Library/Containers/com.terminalconductor.ssh/</code> (the bundle identifier is unchanged from earlier releases for App Store update continuity). See the <a href="/privacy">Privacy Policy</a> for the full breakdown.</p>
+
+        <h2>Naming note</h2>
+
+        <p>This product was previously called <em>Terminal Conductor SSH</em>. It was renamed to <strong>Terminal Champion SSH</strong> in May 2026 to avoid confusion with a similarly named existing product. Same app, same Camis AI LLC team, same bundle identifier — your purchase carries over automatically if you already owned it under the old name.</p>
+
+        <h2>Questions or help</h2>
+
+        <p>Support is the same email and ethos as the full app: <a href="mailto:support@terminalchampion.com">support@terminalchampion.com</a>. See the <a href="/ssh-support">SSH-specific support page</a> for FAQs and bug-reporting steps.</p>
+
+        <footer>
+            <p>&copy; 2026 Camis AI LLC. All rights reserved.</p>
+            <p style="margin-top: 6px;"><a href="/eula.html">EULA</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="/support.html">Support</a></p>
+        </footer>
+    </div>
 </body>
 </html>
