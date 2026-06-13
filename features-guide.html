@@ -153,6 +153,8 @@
                 <li><a href="#theme">Light &amp; dark theme</a></li>
                 <li><a href="#updates">Updates</a></li>
                 <li><a href="#privacy">Privacy &amp; local-first</a></li>
+                <li><a href="#mobile">SSH for iPhone</a></li>
+                <li><a href="#tablet">SSH for iPad</a></li>
                 <li><a href="#shortcuts">Keyboard shortcuts</a></li>
                 <li><a href="#troubleshoot">Troubleshooting</a></li>
             </ul>
@@ -166,7 +168,7 @@
             <section id="quickstart">
                 <h2>Quick start</h2>
                 <ol>
-                    <li>Install Terminal Champion. The full edition is available as a notarized direct download from terminalchampion.com; the SSH-only edition is on the Mac App Store.</li>
+                    <li>Install Terminal Champion. The full edition is available as a notarized direct download from terminalchampion.com; the SSH-only edition is on the Mac and iPhone App Stores, with an iPad edition on the way. (For the mobile editions, see <a href="#mobile">SSH for iPhone</a> and <a href="#tablet">SSH for iPad</a> below.)</li>
                     <li>Launch it. The first tab opens your default shell in your home directory.</li>
                     <li>Press <kbd>⌘T</kbd> for a new tab; <kbd>⌘W</kbd> to close (or detach, depending on your settings).</li>
                     <li>Open the right panel (<kbd>⌘⇧R</kbd>) to discover agent commands and custom slash commands.</li>
@@ -484,6 +486,79 @@
                 <h2>Privacy &amp; local-first</h2>
                 <p>Terminal Champion runs entirely on your Mac. Zero telemetry, zero analytics, no login required. State lives in <code>~/Library/Application Support/TerminalChampion/</code> and browser <code>localStorage</code>. The only outbound network call the app itself makes is the explicit <em>Check for Updates</em> request to <code>updates.terminalchampion.com</code> — and that only when you click the button. The host <code>gh</code> CLI is invoked for the optional GitHub PR row in the bottom panel; whatever it reports back stays local.</p>
                 <p>See the <a href="/privacy">Privacy Policy</a> for the full breakdown, the entitlement-by-entitlement justification, and the complete-deletion procedure.</p>
+            </section>
+
+            <section id="mobile">
+                <h2>Terminal Champion SSH for iPhone</h2>
+                <p>The mobile edition brings the identity-first, multi-terminal workflow to your pocket. It's a real SSH client — a pure-Swift transport built on Citadel, rendering through the same xterm.js engine as the desktop — not a web shell or a relay. It keeps the Mac's idioms: a horizontal tab bar across the top and all three skins (Default, Vertical, 1992). One terminal is in front at a time; tap the tab bar to switch. Available on the App Store.</p>
+
+                <h3>Connecting</h3>
+                <p>Tap <code>+</code> → <em>New Connection</em>. Enter host, port (default 22), username, and password, then <em>Connect</em>. Leave <em>Save to Recents</em> on to keep the host for next time — saved hosts come back under <strong>Pinned</strong> and <strong>Recents</strong>, one tap to reconnect.</p>
+                <ul>
+                    <li><strong>First connect to a new host</strong> shows the server's key fingerprint (trust-on-first-use): <em>Accept</em>, <em>Trust Always</em>, or <em>Reject</em>. The safe default is reject — only accept a fingerprint you recognize.</li>
+                    <li><strong>Saved passwords</strong> are off by default. Turn on <em>Settings → Productivity → Save passwords for saved hosts</em> to store them in the iOS Keychain, and <em>Auto-login via Face&nbsp;ID</em> to gate auto-fill behind biometrics. Private-key sign-in is coming in a later update; this version authenticates by password.</li>
+                </ul>
+
+                <h3>Camera &amp; photos → your AI</h3>
+                <p>The signature mobile feature. Tap the <strong>camera icon</strong> in the keyboard accessory bar above the keyboard, and choose <em>Take Photo</em>, <em>Pick from Photos</em>, <em>Paste from Clipboard</em>, or <em>Pick a File</em>. Terminal Champion uploads the image over SFTP to the session's current directory and types the path at the prompt, so the coding agent running in that terminal — Claude Code, Codex, and the rest — can read it directly. No <code>scp</code>, <code>sftp</code>, or ControlMaster setup required, and it works over a plain SSH connection. Snap a whiteboard, an error on another screen, or a design mockup and hand it straight to the agent. First use prompts for camera and Photos access.</p>
+
+                <h3>Voice input</h3>
+                <p>Tap the <strong>microphone icon</strong> in the keyboard accessory bar and speak. Recognition runs on-device — nothing is sent to Apple's servers — and the live transcript appears as you talk. Tap <em>Insert to prompt</em> to drop the text at the terminal; you review it before pressing Enter, so a misheard word never runs on its own.</p>
+
+                <h3>Highlight to explain (Apple Intelligence)</h3>
+                <p>Long-press any terminal output to select it, then tap <strong>Explain</strong> in the selection menu. The phone's on-device model summarizes or explains the selection without spending a single agent token and without the text leaving your phone — useful for decoding a stack trace or an unfamiliar command mid-session. This uses Apple Intelligence and requires a supported device on iOS&nbsp;26 or later; on other devices the option explains what it needs.</p>
+
+                <h3>Pair with your Mac</h3>
+                <p>Tap the <code>⋯</code> menu → <em>Pair with Mac…</em>. The app discovers Macs running Terminal Champion on the same Wi-Fi over Bonjour; tap yours, enter the six-digit code shown on the Mac, and tap <em>Pair</em>. Once paired, the image picker and voice sheet each gain a <em>Send to paired Mac</em> option that drops the photo or dictated text into the Mac's focused terminal — your phone becomes a camera and microphone for the desktop. Handoff also surfaces the active session on the other device so you can pick up where you left off. The pairing token lives in the iOS Keychain; pair one Mac per phone, and long-press the Mac's name to unpair.</p>
+                <div class="callout">
+                    <p>An optional safety gate: turn on <em>Settings → Productivity → Require Face&nbsp;ID to run on Mac</em> so any command you send <em>and</em> execute on the paired Mac asks for Face&nbsp;ID first. You decide what counts as destructive.</p>
+                </div>
+
+                <h3>Glance — Dynamic Island &amp; Lock Screen</h3>
+                <p>Background the app while a session is live and Terminal Champion keeps you informed without opening it: the Dynamic Island and Lock Screen show connection state, elapsed time, and the most recent line of output. Toggle in <em>Settings → Lock screen &amp; Dynamic Island</em>.</p>
+
+                <h3>The full experience, in your pocket</h3>
+                <ul>
+                    <li><strong>Forking.</strong> Type <code>/fork</code> at an agent's prompt and the app spawns a paired tab, relabels the pair <em>Original</em> / <em>Fork N</em>, and types the resume command — the same orchestration as the desktop, for Claude Code, Codex, Kimi, Grok, and Antigravity.</li>
+                    <li><strong>Skins.</strong> Default (top tab bar), Vertical (sidebar), and 1992 Retro, all in <em>Settings → Appearance → Skin</em>, switching live.</li>
+                    <li><strong>Bookmarks.</strong> Long-press text → <em>Bookmark</em>; tap an icon on the right-edge strip to jump back to that line.</li>
+                    <li><strong>Port forwarding.</strong> <code>⋯</code> menu → <em>Port forwarding</em> to add local (<code>-L</code>) or remote (<code>-R</code>) forwards on the active session.</li>
+                    <li><strong>Reconnect on return.</strong> iOS suspends background apps after a short while; bring Terminal Champion back to the foreground and it re-establishes the SSH session — and reattaches your <code>tmux</code> session if the host has one, so your agent keeps running.</li>
+                    <li><strong>Eight languages, live.</strong> <em>Settings → Locale → Language</em> switches the interface instantly across English, Spanish, French, Russian, Arabic, Korean, and Simplified/Traditional Chinese. Arabic flips the chrome right-to-left while the terminal itself stays left-to-right.</li>
+                </ul>
+            </section>
+
+            <section id="tablet">
+                <h2>Terminal Champion SSH for iPad</h2>
+                <div class="callout">
+                    <p><strong>Coming soon to the App Store.</strong> This section previews how the iPad edition's marquee features work so you know what to expect at launch.</p>
+                </div>
+                <p>The iPad edition is the cockpit, untethered. It shares the iPhone app's SSH core — so connecting, trust-on-first-use, <code>/fork</code>, and port forwarding behave exactly the same — and then removes the one-terminal limit and adds the input that only an iPad has: a Magic Keyboard, trackpad, Apple Pencil, and camera-based hand tracking.</p>
+
+                <h3>Multi-pane cockpit</h3>
+                <p>Run up to <strong>five SSH terminals side by side</strong>. Long-press a tab → <em>Open in split</em> to send it into a new pane, or press <kbd>⌘D</kbd> to split the next tab out. Tap a pane to focus it, or use <kbd>⌘[</kbd> / <kbd>⌘]</kbd> to cycle and <kbd>⌘1</kbd>–<kbd>⌘5</kbd> to jump straight to a pane. Drag the divider between panes to resize; <kbd>⌘W</kbd> closes the focused pane. On a 13" iPad you can watch three agents work at once.</p>
+
+                <h3>iPad layout &amp; context panel</h3>
+                <p>All three skins ship — Default (top tab bar), Vertical (left sidebar), and 1992 Retro — switchable from the <code>⋯</code> menu → <em>Skin</em>. A toggle in the tab bar slides in the inline <strong>Context panel</strong> (Activity, Commands, Summary) beside the terminals instead of over them, so live state and your shell are visible together. The app is multi-scene aware for Stage Manager and multiple windows.</p>
+
+                <h3>Magic Keyboard &amp; trackpad</h3>
+                <p>Hardware shortcuts are wired throughout: <kbd>⌘T</kbd> new connection, <kbd>⌘W</kbd> close pane, <kbd>⌘D</kbd> split, <kbd>⌘1</kbd>–<kbd>⌘5</kbd> focus a pane, <kbd>⌘[</kbd> / <kbd>⌘]</kbd> to move between them. With a trackpad, tap-and-hold a pane's <code>⋮</code> button for its context menu — Paste, Visual Mode, Detach, Close.</p>
+
+                <h3>Apple Pencil</h3>
+                <ul>
+                    <li><strong>Annotate &amp; send.</strong> Pick or capture an image, mark it up on a PencilKit canvas — circle the bug, draw the arrow — then send the flattened image over SFTP to the focused pane for the agent to read.</li>
+                    <li><strong>Scribble.</strong> Tap the Pencil icon to open the handwriting overlay and write a command by hand; on-device recognition turns your strokes into terminal input.</li>
+                    <li><strong>Barrel actions.</strong> Double-tap the Pencil to toggle the context panel; squeeze a Pencil Pro to open the annotate sheet. Enable these in <em>Settings → Apple Pencil</em>.</li>
+                </ul>
+
+                <h3>Hands-free gesture control</h3>
+                <p>Start gesture mode from the tab bar's hand icon. The front camera tracks your hand entirely on-device — nothing leaves the iPad — and a JARVIS-style HUD reticle appears. Swipe left/right to cycle tabs, move your hand up/down to scroll the scrollback, and spread or pinch <em>two</em> hands to grow or shrink the font. Make a fist to summon the radial menu (visual mode, split, add tab, paste, clear) and dwell on an item or drop your index finger to choose it. Tune mirroring, vertical inversion, and sensitivity in <em>Settings → Gesture Control</em>, and run the on-screen <strong>Calibration</strong> guide once so the thresholds fit your hand. It's the no-keyboard, no-touch way to drive the cockpit across the room.</p>
+
+                <h3>Voice loop — speak and listen</h3>
+                <p>The iPad reads agent responses back to you with on-device text-to-speech. Tap <em>Speak last response</em>, or enable <em>auto-speak</em> so it reads each agent reply once the output settles into a quiet moment. <em>Prose only</em> skips code blocks and redacts anything that looks like a secret before speaking. All in <em>Settings → Speech</em>.</p>
+
+                <h3>Everything from the SSH core</h3>
+                <p>Because the iPad shares the iPhone app's engine, the full SSH feature set comes along: the same connection flow and saved hosts, trust-on-first-use known-hosts, <code>/fork</code> orchestration, port forwarding, agent-colored tabs with live activity pulses, and the right-edge bookmark strip. Drag a file from Files or Safari onto a pane to upload it over SFTP and drop its path at the prompt.</p>
             </section>
 
             <section id="shortcuts">
