@@ -77,4 +77,10 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://terminalchampion.com/es/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://terminalchampion.com/" />
   </url>
+  <url>
+    <loc>https://terminalchampion.com/blog/</loc>
+  </url>
+  <url>
+    <loc>https://terminalchampion.com/blog/best-terminal-for-claude-code-codex-gemini-2026/</loc>
+  </url>
 </urlset>
