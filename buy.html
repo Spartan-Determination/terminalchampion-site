@@ -192,6 +192,22 @@
             text-align: center;
         }
 
+        /* Phones: the title is nowrap+ellipsis on desktop so every $2.99 lines
+           up, but on a narrow screen the longer "…SSH for iPhone/iPad" titles
+           push the price + button past the right edge (no horizontal scroll on
+           mobile, so the Get button just disappears). Wrap the row instead:
+           title on its own full-width line, price + button on a second line. */
+        @media (max-width: 600px) {
+            .platform-row { flex-wrap: wrap; }
+            .platform-meta { flex-basis: 100%; }
+            .platform-label {
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+            }
+            .buy-btn, .soon-pill { margin-left: auto; }
+        }
+
         .divider {
             width: 1px;
             background: rgba(201, 191, 171, 0.6);
