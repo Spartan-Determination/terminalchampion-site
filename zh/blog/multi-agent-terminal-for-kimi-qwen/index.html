@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>为 Kimi 和 Qwen 打造的多智能体终端 — Terminal Champion</title>
+    <meta name="description" content="同时使用 Claude Code、Kimi、Qwen、Codex 的中国开发者，需要一个能区分每个智能体的终端。Terminal Champion 原生支持 Kimi 和 Qwen，自动配色、会话持久化、SSH 图片粘贴。$2.99 一次性付费。">
+    <link rel="canonical" href="https://terminalchampion.com/zh/blog/multi-agent-terminal-for-kimi-qwen/">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://terminalchampion.com/zh/blog/multi-agent-terminal-for-kimi-qwen/">
+    <meta property="og:title" content="为 Kimi 和 Qwen 打造的多智能体终端 — Terminal Champion">
+    <meta property="og:description" content="同时使用 Claude Code、Kimi、Qwen、Codex 的中国开发者，需要一个能区分每个智能体的终端。Terminal Champion 原生支持 Kimi 和 Qwen。">
+    <meta property="og:image" content="https://terminalchampion.com/hero-conductor.png">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2026-06-24">
+    <meta property="article:author" content="Camis AI LLC">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="为 Kimi 和 Qwen 打造的多智能体终端 — Terminal Champion">
+    <meta name="twitter:description" content="原生支持 Kimi 和 Qwen 的多智能体终端。自动配色、会话持久化、SSH 图片粘贴。$2.99 一次性付费。">
+    <meta name="twitter:image" content="https://terminalchampion.com/hero-conductor.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "为 Kimi 和 Qwen 打造的多智能体终端",
+      "description": "同时使用 Claude Code、Kimi、Qwen、Codex 的中国开发者，需要一个能区分每个智能体的终端。Terminal Champion 原生支持 Kimi 和 Qwen。",
+      "image": "https://terminalchampion.com/hero-conductor.png",
+      "inLanguage": "zh-Hans",
+      "datePublished": "2026-06-24",
+      "dateModified": "2026-06-24",
+      "author": { "@type": "Organization", "name": "Camis AI LLC" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Camis AI LLC",
+        "logo": { "@type": "ImageObject", "url": "https://terminalchampion.com/favicon.svg" }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://terminalchampion.com/zh/blog/multi-agent-terminal-for-kimi-qwen/"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #fcfbf8;
+            color: #5a4e3f;
+            line-height: 1.85;
+        }
+        .wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 24px; }
+        .back { display: inline-block; margin-bottom: 36px; color: #8a6a2c; font-size: 0.9em; text-decoration: none; }
+        .back:hover { text-decoration: underline; }
+
+        h1 {
+            font-family: 'Fraunces', 'Playfair Display', Georgia, "Microsoft YaHei", serif;
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 500;
+            color: #1a1510;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .byline {
+            font-size: 0.86em;
+            color: #8a7f6d;
+            margin-bottom: 40px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(42, 35, 25, 0.1);
+        }
+        .byline strong { color: #5a4e3f; font-weight: 600; }
+
+        h2 {
+            font-family: 'Fraunces', 'Playfair Display', Georgia, "Microsoft YaHei", serif;
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #1a1510;
+            letter-spacing: -0.01em;
+            margin: 52px 0 16px;
+        }
+        p { margin-bottom: 18px; font-size: 1.0em; }
+        ul, ol { margin: 0 0 18px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        strong { color: #1a1510; font-weight: 600; }
+        a { color: #8a6a2c; }
+
+        code {
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: rgba(138, 106, 44, 0.08);
+            color: #8a6a2c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        .cta {
+            margin: 48px 0 8px;
+            padding: 28px 28px 30px;
+            background: rgba(138, 106, 44, 0.06);
+            border: 1px solid rgba(138, 106, 44, 0.18);
+            border-radius: 12px;
+        }
+        .cta h3 { margin-top: 0; color: #1a1510; font-family: 'Fraunces', Georgia, "Microsoft YaHei", serif; font-weight: 500; font-size: 1.25em; margin-bottom: 12px; }
+        .cta p { margin-bottom: 16px; }
+        .btn {
+            display: inline-block;
+            background: #1a1510;
+            color: #fcfbf8;
+            font-weight: 600;
+            font-size: 0.92em;
+            padding: 11px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        .btn:hover { background: #2a2319; }
+
+        .sig { margin-top: 28px; font-size: 0.95em; color: #5a4e3f; }
+        .sig strong { color: #1a1510; }
+
+        footer {
+            text-align: center;
+            padding: 44px 0 16px;
+            font-size: 0.85em;
+            color: #8a7f6d;
+            border-top: 1px solid rgba(42, 35, 25, 0.1);
+            margin-top: 64px;
+        }
+        footer a { color: #8a6a2c; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <article class="wrap">
+        <a class="back" href="/zh/blog/">← 返回博客</a>
+
+        <h1>为 Kimi 和 Qwen 打造的多智能体终端</h1>
+        <p class="byline"><strong>Camis AI LLC</strong> · 2026 年 6 月 24 日</p>
+
+        <p>2026 年的中国开发者面临一个独特的问题：每天同时使用多个 AI 编程助手。Claude Code 写架构、Kimi 处理中文文档、Qwen 做代码重构、Codex 写测试。四个标签页，四个智能体，四种工作流 — 但在普通的终端里，它们看起来一模一样。</p>
+
+        <p>我是 Camis AI LLC 的独立开发者。我花了 14 个月构建 Terminal Champion，一款专为多智能体 AI 编程工作流设计的跨平台桌面终端。今天我想专门讲讲它对中国开发者的意义。</p>
+
+        <h2>原生支持 Kimi 和 Qwen</h2>
+
+        <p>据我所知，Terminal Champion 是市场上唯一一个原生支持 Kimi 和 Qwen 的 AI 终端：</p>
+
+        <ul>
+            <li><strong>Kimi 标签页渐变色</strong>：金色 — 因为月之暗面的视觉识别</li>
+            <li><strong>Qwen 标签页渐变色</strong>：樱花粉 — 因为阿里通义的春樱主题</li>
+            <li><strong>多语言识别</strong>：同时支持简体和繁体中文的智能体输出识别</li>
+        </ul>
+
+        <p>当你在一个标签页运行 Kimi、另一个运行 Qwen，第三个运行 Claude Code，Terminal Champion 会自动识别并用不同颜色区分。再也不会切换到错误的标签页。</p>
+
+        <h2>/fork 命令：并行运行 5 个智能体</h2>
+
+        <p><code>/fork 5</code> 这一条命令会在分屏视图中同时启动 5 个相同智能体的并行实例。非常适合“让 5 个 Claude 并行尝试同一个问题，然后比较结果”的工作流。</p>
+
+        <h2>会话持久化：再也不丢失上下文</h2>
+
+        <p>后台守护进程 (<code>tc-daemon</code>) 在 GUI 进程之外保持 PTY 文件描述符。这意味着即使应用崩溃、强制退出、甚至系统重启，所有智能体会话都会带着完整的滚动历史恢复。</p>
+
+        <h2>在 SSH 会话中直接粘贴图片</h2>
+
+        <p><code>Cmd+V</code> 一张截图。Terminal Champion 通过 SSH 通道把图片传输到远程 Claude Code 的上下文中。不需要先保存文件，不需要 SCP，不打断工作流。</p>
+
+        <h2>六款主题，包含中文友好的字体支持</h2>
+
+        <ul>
+            <li>默认深色主题</li>
+            <li>Bubblegum Princess (粉色系)</li>
+            <li>Neon City (霓虹赛博朋克)</li>
+            <li>JARVIS HUD (科技感动态边框)</li>
+            <li>Coding Cowboy (西部牛仔)</li>
+            <li>1992 Windows 3.1 复古主题</li>
+        </ul>
+
+        <p>所有主题都正确处理中文字符渲染，不会出现宽度计算错误。</p>
+
+        <h2>价格与购买</h2>
+
+        <p>$2.99 一次性付费 / 平台，每个许可证支持 3 台设备。</p>
+
+        <ul>
+            <li>Mac 版：通过 Homebrew (<code>brew install --cask terminalchampion</code>) 或直接下载 DMG</li>
+            <li>Linux 版：AppImage / .deb / .rpm，AUR 社区包，Flathub 即将上架</li>
+            <li>Windows 版：直接安装包 (Azure 签名进行中)</li>
+        </ul>
+
+        <p>Lemon Squeezy 处理支付 — 支持支付宝、微信支付、信用卡、PayPal。自动计算所有国家的 VAT 和增值税。</p>
+
+        <p>不是订阅。不需要 API key。不按 token 计费。使用你已经订阅的 AI 服务即可 (Claude Pro、ChatGPT Plus、月之暗面会员、通义千问会员)。</p>
+
+        <h2>立即试用</h2>
+
+        <p>中文网站：<a href="https://terminalchampion.com/zh/">https://terminalchampion.com/zh/</a><br>
+        联系：<a href="mailto:support@terminalchampion.com">support@terminalchampion.com</a></p>
+
+        <p>如果在试用过程中遇到任何问题，直接联系我们。我们会用中文 (使用机器翻译辅助) 回复。</p>
+
+        <p class="sig">谢谢。<br>
+        <strong>Camis AI LLC</strong></p>
+
+        <div class="cta">
+            <h3>为多智能体工作流而生</h3>
+            <p>如果上面描述的痛点你太熟悉了，Terminal Champion 就是为此而生的终端：每个智能体自动配色、会话在崩溃后依然存活、底层运行的是你自己订阅的 Claude、Kimi、Qwen 或 Codex。$2.99 一次性付费，三台设备，没有订阅。</p>
+            <a class="btn" href="/buy.html">获取 Terminal Champion — $2.99</a>
+        </div>
+
+        <footer>
+            <p><a href="/zh/blog/">← 更多博客文章</a> &nbsp;·&nbsp; <a href="/zh/">terminalchampion.com</a></p>
+            <p>&copy; 2026 Camis AI LLC. 版权所有。</p>
+        </footer>
+    </article>
+</body>
+</html>
